@@ -367,9 +367,19 @@ body {
   text-align: center;
 }
 
+.popup-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 .popup-content img {
   max-width: 100%;
+  max-height: 200px;
   margin: 1rem 0;
+}
+
+.popup-content p {
+  text-align: justify;
 }
 
 .popup-content .close {
