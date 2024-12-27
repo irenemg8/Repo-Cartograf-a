@@ -164,6 +164,11 @@ h2::selection {
   background: url(../assets/project/project-six.png) center center/cover;
 }
 
+/* Project 7 */
+.card:nth-child(7) {
+  background: url(../assets/project/project-seven.png) center center/cover;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   .header-container {
