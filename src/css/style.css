@@ -144,6 +144,7 @@ body {
   width: 150px;
   border-radius: 50%;
   animation: bounce 1s infinite alternate;
+  /*border: var(--text-color) 5px solid;*/
 }
 
 @keyframes bounce {
@@ -208,7 +209,7 @@ body {
 
 /* Footer */
 #footer {
-  background: #111111;
+  background: black;
 }
 
 #footer .container {
@@ -222,7 +223,7 @@ body {
 }
 
 #footer a {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #fff;
 }
 
@@ -244,7 +245,12 @@ body {
 }
 
 #footer p {
-  font-size: 0.8rem;
+  font-size: 1rem;
+}
+#footer li {
+  font-size: 1rem;
+  text-decoration: none;
+  list-style: none;
 }
 
 /* Responsiveness */
