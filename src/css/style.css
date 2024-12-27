@@ -338,3 +338,49 @@ body {
     width: 80%;
   }
 }
+
+
+
+/*---- POPUP ------*/
+/* Popups */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: var(--bg-primary);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.popup-content img {
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.popup-content .close {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  font-size: 3rem;
+  cursor: pointer;
+  color: black;
+}
+
+.popup-content .close:hover {
+  color:var(--primary-color);
+}

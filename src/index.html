@@ -122,7 +122,7 @@
 
       <article class="project">
         <!-- Project 1 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup1')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 1</h3>
@@ -131,8 +131,20 @@
           </div>
         </div>
 
+
+          <!-- Popup 1 -->
+    <div id="popup1" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup1')">&times;</span>
+        <h3>Práctica 1</h3>
+        <p>Escribir el enunciado de la práctica Introducción a QGIS</p>
+        <img src="assets/practica1.jpg" alt="Práctica 1">
+        <a href="assets/practica1.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+      </div>
+    </div>
+
         <!-- Project 2 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup2')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 3</h3>
@@ -141,8 +153,19 @@
           </div>
         </div>
 
+         <!-- Popup 2 -->
+    <div id="popup2" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('popup2')">&times;</span>
+        <h3>Práctica 3</h3>
+        <p>Mapa de temperaturas y precipitaciones</p>
+        <img src="assets/practica3.jpg" alt="Práctica 3">
+        <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+      </div>
+    </div>
+
         <!-- Porject 3 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup3')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 4</h3>
@@ -151,9 +174,20 @@
           </div>
         </div>
 
+        <!-- Popup 3 -->
+        <div id="popup3" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup('popup3')">&times;</span>
+            <h3>Práctica 3</h3>
+            <p>Mapa de temperaturas y precipitaciones</p>
+            <img src="assets/practica3.jpg" alt="Práctica 3">
+            <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+          </div>
+        </div>
+
 
         <!-- Project 4 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup4')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 7</h3>
@@ -161,9 +195,19 @@
             </div>
           </div>
         </div>
+        <!-- Popup 4 -->
+        <div id="popup4" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup('popup4')">&times;</span>
+            <h3>Práctica 3</h3>
+            <p>Mapa de temperaturas y precipitaciones</p>
+            <img src="assets/practica3.jpg" alt="Práctica 3">
+            <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+          </div>
+        </div>
 
         <!-- Project 5 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup5')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 8</h3>
@@ -171,9 +215,19 @@
             </div>
           </div>
         </div>
+        <!-- Popup 5 -->
+        <div id="popup4" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup('popup4')">&times;</span>
+            <h3>Práctica 3</h3>
+            <p>Mapa de temperaturas y precipitaciones</p>
+            <img src="assets/practica3.jpg" alt="Práctica 3">
+            <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+          </div>
+        </div>
 
         <!-- Project 6 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup6')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 9</h3>
@@ -181,14 +235,34 @@
             </div>
           </div>
         </div>
+        <!-- Popup 6 -->
+        <div id="popup6" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup('popup6')">&times;</span>
+            <h3>Práctica 3</h3>
+            <p>Mapa de temperaturas y precipitaciones</p>
+            <img src="assets/practica3.jpg" alt="Práctica 3">
+            <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
+          </div>
+        </div>
 
         <!-- Project 7 -->
-        <div href="" class="card">
+        <div href="" class="card" onclick="openPopup('popup7')">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 10</h3>
               <p>Imágenes GeoTIFF del índice calculado</p>
             </div>
+          </div>
+        </div>
+        <!-- Popup 7 -->
+        <div id="popup7" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup('popup7')">&times;</span>
+            <h3>Práctica 3</h3>
+            <p>Mapa de temperaturas y precipitaciones</p>
+            <img src="assets/practica3.jpg" alt="Práctica 3">
+            <a href="assets/practica3.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
           </div>
         </div>
 
@@ -207,5 +281,15 @@
       </div>
     </footer>
     <script src="js/script.js"></script>
+    <script>
+      function openPopup(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+    </script>
   </body>
 </html>
