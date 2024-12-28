@@ -394,3 +394,56 @@ body {
 .popup-content .close:hover {
   color:var(--primary-color);
 }
+
+/*He tocado yo esto, es para el POPUP de la práctica 7*/
+
+/* Estilos para mejorar la apariencia de la tabla en el popup */
+.popup-content .table-responsive {
+  overflow-x: auto;
+  margin: 1rem 0;
+  max-height: 300px; /* Limitar la altura de la tabla */
+}
+
+.popup-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+}
+
+.popup-content th, .popup-content td {
+  padding: 0.5rem; /* Reducir el padding */
+  text-align: left;
+  border: 1px solid var(--bg-secondary-two);
+}
+
+.popup-content th {
+  background-color: var(--primary-color);
+  color: var(--text-color-two);
+}
+
+.popup-content tr:nth-child(even) {
+  background-color: var(--card-background);
+}
+
+.popup-content tr:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Hasta aquí práctica 7*/
+
+/* Práctica 8 */
+/* Estilos para los iframes en el popup */
+.iframe-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.iframe-container iframe {
+  width: 48%;
+  height: 300px;
+  border: 1px solid var(--bg-secondary-two);
+  border-radius: 8px;
+}
