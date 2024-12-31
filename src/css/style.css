@@ -365,6 +365,8 @@ body {
   width: 90%;
   position: relative;
   text-align: center;
+  overflow-y: auto; /* Habilitar scroll vertical si el contenido supera la altura */
+  max-height: 90%; /* Limitar altura máxima del popup */
 }
 
 .popup-content h3 {
@@ -419,7 +421,7 @@ body {
 
 .popup-content th {
   background-color: var(--primary-color);
-  color: var(--text-color-two);
+  color: var(--text-color);
 }
 
 .popup-content tr:nth-child(even) {
@@ -446,4 +448,25 @@ body {
   height: 300px;
   border: 1px solid var(--bg-secondary-two);
   border-radius: 8px;
+}
+
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scrollbar */
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white; /* Fondo de la pista */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color); /* Color del scroll */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color); /* Cambia el color al pasar el cursor */
 }
