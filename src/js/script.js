@@ -26,27 +26,16 @@ const toggleSwitch = document.querySelector(
 function switchTheme(e) {
   if (e.target.checked) {
     document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
   } else {
     document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
   }
 }
 
 toggleSwitch.addEventListener("change", switchTheme, false);
 
-//  Store color theme for future visits
-
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark"); //add this
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light"); //add this
-  }
-}
-
 // Save user preference on load
-
 const currentTheme = localStorage.getItem("theme")
   ? localStorage.getItem("theme")
   : null;
@@ -59,68 +48,73 @@ if (currentTheme) {
   }
 }
 
-//Adding date
-
-let myDate = document.querySelector("#datee");
-
-const yes = new Date().getFullYear();
-myDate.innerHTML = yes;
-
-
 // Function to create the map and add elements
 function createMap() {
-    // Create the map
-    var map = L.map('map3').setView([43, -8], 8);
+  // Create the map
+  var map = L.map("map3").setView([42, -5], 7);
 
-    // Add OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-    }).addTo(map);
+  // Add OpenStreetMap tile layer
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+  }).addTo(map);
 
-    // Load and transform the Shape file to GeoJSON
-    fetch('VECTORIAL/zonas_validas_shp/zonas_validas.shp')
-        .then(response => response.json())
-        .then(data => {
-            // Define the color ramp based on the Aptitude values
-            var getColor = function(d) {
-                return d > 2 ? 'green' :
-                       d > 1 ? 'yellow' :
-                               'red';
-            };
+  // Load and transform the Shape file to GeoJSON
+  fetch("assets/VECTORIAL/zonas_validas_shp/ZONAS_VALIDAS.geojson")
+    .then((response) => response.json())
+    .then((data) => {
+      // Create a color scale
+      var colorScale = chroma.scale(["red", "yellow", "green"]).domain([5, 4, 3]);
 
-            // Define the style for each feature
-            var style = function(feature) {
-                return {
-                    fillColor: getColor(feature.properties.DN),
-                    weight: 0.2,
-                    opacity: 1,
-                    color: 'black',
-                    fillOpacity: 0.7
-                };
-            };
+      // Define the style for each feature
+      var style = function (feature) {
+        return {
+          fillColor: colorScale(feature.properties.DN),
+          weight: 0.2,
+          opacity: 1,
+          color: "black",
+          fillOpacity: 0.7,
+        };
+      };
 
-            // Define the popup content
-            var onEachFeature = function(feature, layer) {
-                if (feature.properties && feature.properties.DN) {
-                    layer.bindPopup("Aptitud: " + feature.properties.DN);
-                }
-            };
+      // Define the popup content
+      var onEachFeature = function (feature, layer) {
+        if (feature.properties && feature.properties.DN) {
+          layer.bindPopup("Aptitud: " + feature.properties.DN);
+        }
+      };
 
-            // Add GeoJSON layer to the map
-            L.geoJson(data, {
-                style: style,
-                onEachFeature: onEachFeature
-            }).addTo(map);
-
-            // Add layer control
-            L.control.layers(null, {
-                'Galicia_Ecualiptus': L.geoJson(data, {
-                    style: style,
-                    onEachFeature: onEachFeature
-                })
-            }).addTo(map);
-        });
+      L.geoJson(data, {
+        style: style,
+        onEachFeature: onEachFeature,
+      }).addTo(map);
+      
+      // Add color scale legend
+      var legend = L.control({ position: "bottomright" });
+      legend.onAdd = function () {
+        var div = L.DomUtil.create("div", "info legend"),
+          grades = [3, 4, 5],
+          labels = [];
+        div.innerHTML += "<strong>Aptitud</strong><br>";
+        // Loop through intervals to generate legend labels
+        for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+            '<i style="background:' +
+            colorScale(grades[i]) +
+            '"></i> ' +
+            grades[i] +
+            (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+        }
+        return div;
+      };
+      legend.addTo(map);
+    });
 }
 
-// Call the function to create the map
-createMap();
+// Close popup function
+function openPopup(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closePopup(id) {
+  document.getElementById(id).style.display = "none";
+}

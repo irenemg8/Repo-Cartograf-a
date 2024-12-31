@@ -470,3 +470,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-color); /* Cambia el color al pasar el cursor */
 }
+
+
+
+
+
+#map3 {
+  height: 400px;
+  width: 100%; /* Asegura un ancho completo */
+}
