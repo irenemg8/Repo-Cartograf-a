@@ -7,8 +7,9 @@
     <!-- Primary Meta Tags -->
     <title>Portfolio. WebMapping</title>
     <meta name="title" content="Portfolio. WebMapping" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <link
+    <!--<link
       rel="apple-touch-icon"
       sizes="180x180"
       href="assets/favicon/apple-touch-icon.png"
@@ -174,7 +175,7 @@
     </div>
 
         <!-- Porject 3 -->
-        <div href="" class="card" onclick="openPopup('popup3')">
+        <div href="" class="card" onclick="openPopup('popup3'); createMap();">
           <div class="project-info">
             <div class="project-bio">
               <h3>Práctica 4</h3>
@@ -182,7 +183,7 @@
             </div>
           </div>
         </div>
-
+        
         <!-- Popup 3 -->
         <div id="popup3" class="popup">
           <div class="popup-content">
@@ -192,9 +193,10 @@
             
             <a href="assets/practica4.pdf" class="btn btn-primary" target="_blank">Descargar enunciado</a>
             <a href="assets/zonas_validas_shp.zip" class="btn btn-primary" target="_blank">Descargar fichero .shp</a>
-
-          </br>
-            <img src="assets/practica4.png" alt="Práctica 4"> <!-- CAMBIAR, HABRÁ QUE PONERLE EL GEOTIFF, VER PLUGINS -->
+        
+            </br>            
+            <!-- Contenedor para el mapa -->
+            <div id="map3" style="height: 400px;"></div>
           </div>
         </div>
 
@@ -485,6 +487,9 @@
     <script>
       function openPopup(id) {
   document.getElementById(id).style.display = 'flex';
+  if(id=='popup3'){
+    createMap();
+  }
 }
 
 function closePopup(id) {
@@ -492,5 +497,6 @@ function closePopup(id) {
 }
 
     </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   </body>
 </html>
