@@ -110,6 +110,41 @@ function createMap() {
     });
 }
 
+// Function to create the raster map and add elements
+function createRasterMap() {
+  // Create the map
+  var map = L.map("map6").setView([38.9, -0.28], 11);
+
+  // Add OpenStreetMap tile layer
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+  }).addTo(map);
+
+  // Function to load PNG
+  function loadPNG(url, bounds) {
+    return L.imageOverlay(url, bounds, { opacity: 0.7 });
+  }
+
+  // Load PNG layers
+  var saviPreLayer = loadPNG("assets/RASTER/savi_pre_prac9.png", [
+    [38.8, -0.40],
+    [39.0, -0.15],
+  ]);
+  var saviPostLayer = loadPNG("assets/RASTER/savi_post_prac9.png", [
+    [38.8, -0.40],
+    [39.0, -0.15],
+  ]);
+
+  // Add layers to map
+  saviPreLayer.addTo(map);
+
+  // Add layer control
+  L.control.layers(null, {
+    "SAVI Pre": saviPreLayer,
+    "SAVI Post": saviPostLayer,
+  }).addTo(map);
+}
+
 // Close popup function
 function openPopup(id) {
   document.getElementById(id).style.display = "block";
