@@ -154,3 +154,86 @@ function closePopup(id) {
   document.getElementById(id).style.display = "none";
 }
 
+
+
+
+function openPopup(id) {
+  document.getElementById(id).style.display = 'flex';
+  if(id=='popup3'){
+    createMap();
+  }
+}
+
+function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+
+
+
+//  Scroll del botón 
+document.querySelector('.btn-secondary').addEventListener('click', function (e) {
+  e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+  const target = document.querySelector('#projects'); // Selecciona la sección de destino
+  const targetPosition = target.offsetTop; // Calcula la posición en píxeles desde el top
+  const startPosition = window.scrollY; // Posición actual
+  const distance = targetPosition - startPosition; // Distancia total a desplazarse
+  const duration = 800; // Duración en milisegundos (0.8 segundos)
+  let start = null;
+
+  // Función para realizar la animación
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const progress = timestamp - start;
+    const easeInOutQuad = progress / duration < 0.5
+      ? 2 * Math.pow(progress / duration, 2)
+      : 1 - Math.pow(-2 * (progress / duration) + 2, 2) / 2;
+    const scrollPosition = startPosition + distance * easeInOutQuad;
+
+    window.scrollTo(0, scrollPosition);
+
+    if (progress < duration) {
+      window.requestAnimationFrame(step); // Sigue la animación
+    } else {
+      window.scrollTo(0, targetPosition); // Asegura la posición final exacta
+    }
+  }
+
+  window.requestAnimationFrame(step); // Inicia la animación
+});
+
+
+
+
+
+
+
+
+document.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 0) {
+    navbar.classList.add("scroll");
+  } else {
+    navbar.classList.remove("scroll");
+  }
+});
+
+
+
+
+
+
+
+
+ // Script para actualizar la barra de progreso
+ window.addEventListener("scroll", () => {
+  const progressBar = document.querySelector(".progress__bar");
+  const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrollPercentage = (window.scrollY / scrollTotal) * 100;
+  progressBar.style.width = `${scrollPercentage}%`;
+});
+
+
+
+
+
