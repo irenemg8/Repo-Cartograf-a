@@ -92,18 +92,16 @@
     <br>
     <a href="assets/practica1.pdf" class="btn btn-primary showToast" target="_blank">Descargar enunciado</a>
     <a href="assets/practica1.png" class="btn btn-primary showToast" target="_blank">Descargar resultado en png</a>
-    
-    <!-- Notificación -->
-    <div class="notification" style="opacity: 0; visibility: hidden;">
-      <div class="notification__body">
-        <img src="assets/check-circle.svg" alt="Success" class="notification__icon">
-        &nbsp; El archivo se está descargando 🚀
-      </div>
-      <div class="notification__progress"></div>
-    </div>
   </div>
+  <!-- Notificación -->
+  <div class="notification" style="opacity: 0; visibility: hidden;">
+    <div class="notification__body">
+      <img src="assets/check-circle.svg" alt="Success" class="notification__icon">
+      &nbsp; El archivo se está descargando 🚀
+    </div>
+    <div class="notification__progress"></div>
+  </div>  
 </div>
-
 
         <!-- Project 2 -->
         <div class="card" onclick="openPopup('popup2')">
@@ -438,32 +436,29 @@
       </div>
     </footer>
 
-    <!--<div class="notification">
-        <div class="notification__body">
-            <img
-                src="assets/check-circle.svg"
-                alt="Success"
-                class="notification__icon"
-            >
-            Your account has been created! &#128640; 
-        </div>
-        <div class="notification__progress"></div>
-    </div> -->
-  
-
 <script> 
-// Función para mostrar la notificación
-function showNotification() {
+// Función para mostrar la notificación y manejar la descarga
+function showNotificationAndDownload(url) {
   const notification = document.querySelector('.notification');
   if (notification) {
     notification.style.opacity = '1';
     notification.style.visibility = 'visible';
 
-    // Ocultar después de 3 segundos
-    setTimeout(() => {
-      notification.style.opacity = '0';
-      notification.style.visibility = 'hidden';
-    }, 3000);
+    // Simular progreso de descarga
+    const progressBar = notification.querySelector('.notification__progress');
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        notification.style.opacity = '0';
+        notification.style.visibility = 'hidden';
+        // Descargar el archivo
+        window.location.href = url;
+      } else {
+        width++;
+        progressBar.style.width = width + '%';
+      }
+    }, 30); // Ajusta el tiempo para simular el progreso
   }
 }
 
@@ -471,12 +466,12 @@ function showNotification() {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn.showToast').forEach(button => {
     button.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevenir comportamiento por defecto (si es necesario)
-      showNotification();
+      event.preventDefault(); // Prevenir la descarga inmediata
+      const url = button.getAttribute('href');
+      showNotificationAndDownload(url);
     });
   });
 });
-
 </script>
 
 
