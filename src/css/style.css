@@ -17,6 +17,7 @@
   --bg-secondary: #000000;
   --card-background: #f4f4f4;
   --bg-secondary-two: #111111;
+  --grey: gray;
 
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 
@@ -562,4 +563,11 @@ html {
   height: 400px; /* Altura del iframe */
   border: none; /* Sin bordes */
   border-radius: 25px; /* Bordes redondeados opcionales */
+}
+
+
+
+/*-------sombreado navbar ----------*/
+.navbar.scroll {
+  box-shadow: 0 2px 4px var(--grey); /* Sombra visible al hacer scroll */
 }

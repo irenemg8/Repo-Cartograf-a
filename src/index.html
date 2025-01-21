@@ -469,6 +469,17 @@ function closePopup(id) {
   });
 </script>
 
+<script>
+  document.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 0) {
+    navbar.classList.add("scroll");
+  } else {
+    navbar.classList.remove("scroll");
+  }
+});
+
+</script>
 
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
