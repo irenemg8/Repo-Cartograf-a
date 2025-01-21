@@ -526,37 +526,34 @@ window.addEventListener("scroll", () => {
 </script>
 
 
+<script> 
+// Función para mostrar la notificación
+function showNotification() {
+  const notification = document.querySelector('.notification');
+  if (notification) {
+    notification.style.opacity = '1';
+    notification.style.visibility = 'visible';
 
-<script>
-// Seleccionar todos los enlaces con clase showToast
-document.querySelectorAll('.showToast').forEach((link) => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault(); // Evitar el comportamiento predeterminado
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      notification.style.visibility = 'hidden';
+    }, 3000);
+  }
+}
 
-    // Seleccionar el popup actual y buscar su notificación
-    const popup = this.closest('.popup'); // Contenedor del popup
-    const notification = popup.querySelector('.notification'); // Notificación del popup
-
-    if (notification) {
-      // Mostrar la notificación
-      notification.style.opacity = '1';
-      notification.style.visibility = 'visible';
-
-      // Ocultar la notificación después de 3 segundos
-      setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.visibility = 'hidden';
-      }, 3000);
-    }
-
-    // Continuar con la descarga del archivo en una nueva pestaña
-    const fileUrl = this.getAttribute('href');
-    if (fileUrl) {
-      window.open(fileUrl, '_blank');
-    }
+// Vincular la notificación a los botones con la clase 'showToast'
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn.showToast').forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevenir comportamiento por defecto (si es necesario)
+      showNotification();
+    });
   });
 });
+
 </script>
+
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/shapefile@0.6.6/dist/shapefile.js"></script>
