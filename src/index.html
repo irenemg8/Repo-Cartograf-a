@@ -83,17 +83,27 @@
         </div>
 
         <!-- Popup 1 -->
-        <div id="popup1" class="popup">
-          <div class="popup-content">
-            <span class="close" onclick="closePopup('popup1')">&times;</span>
-            <h3>Práctica 1</h3>
-            <p>Esta práctica tiene como objetivo realizar una introducción general al software QGIS. Se describirán la estructura de este programa, herramientas y operaciones básicas que servirán como punto de partida a los usuarios que se inicien en la utilización de los Sistema de Información Geográfica.</p>
-            <img src="assets/practica1.png" alt="Práctica 1">
-            </br>
-            <a href="assets/practica1.pdf" class="btn btn-primary showToast" target="_blank" >Descargar enunciado</a>
-            <a href="assets/practica1.png" class="btn btn-primary showToast" target="_blank" >Descargar resultado en png</a>
-          </div>
-        </div>
+<div id="popup1" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('popup1')">&times;</span>
+    <h3>Práctica 1</h3>
+    <p>Esta práctica tiene como objetivo realizar una introducción general al software QGIS. Se describirán la estructura de este programa, herramientas y operaciones básicas que servirán como punto de partida a los usuarios que se inicien en la utilización de los Sistemas de Información Geográfica.</p>
+    <img src="assets/practica1.png" alt="Práctica 1">
+    <br>
+    <a href="assets/practica1.pdf" class="btn btn-primary showToast" target="_blank">Descargar enunciado</a>
+    <a href="assets/practica1.png" class="btn btn-primary showToast" target="_blank">Descargar resultado en png</a>
+    
+    <!-- Notificación -->
+    <div class="notification" style="opacity: 0; visibility: hidden;">
+      <div class="notification__body">
+        <img src="assets/check-circle.svg" alt="Success" class="notification__icon">
+        Tu archivo está descargando 🚀
+      </div>
+      <div class="notification__progress"></div>
+    </div>
+  </div>
+</div>
+
 
         <!-- Project 2 -->
         <div class="card" onclick="openPopup('popup2')">
@@ -515,6 +525,38 @@ window.addEventListener("scroll", () => {
 
 </script>
 
+
+
+<script>
+// Seleccionar todos los enlaces con clase showToast
+document.querySelectorAll('.showToast').forEach((link) => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault(); // Evitar el comportamiento predeterminado
+
+    // Seleccionar el popup actual y buscar su notificación
+    const popup = this.closest('.popup'); // Contenedor del popup
+    const notification = popup.querySelector('.notification'); // Notificación del popup
+
+    if (notification) {
+      // Mostrar la notificación
+      notification.style.opacity = '1';
+      notification.style.visibility = 'visible';
+
+      // Ocultar la notificación después de 3 segundos
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.visibility = 'hidden';
+      }, 3000);
+    }
+
+    // Continuar con la descarga del archivo en una nueva pestaña
+    const fileUrl = this.getAttribute('href');
+    if (fileUrl) {
+      window.open(fileUrl, '_blank');
+    }
+  });
+});
+</script>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/shapefile@0.6.6/dist/shapefile.js"></script>
